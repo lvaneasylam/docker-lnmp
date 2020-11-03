@@ -27,7 +27,7 @@ RUN apt-get update && apt-get install -y \
         libmemcached-dev zlib1g-dev \
         libc-client-dev libkrb5-dev \
     && rm -r /var/lib/apt/lists/* \
-    && pecl install redis-5.1.1 \
+    && pecl install redis-4.3.0 \
     && pecl install memcached-2.2.0 \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
@@ -37,3 +37,6 @@ RUN apt-get update && apt-get install -y \
 
 EXPOSE 9000
 
+LABEL Author="Leo"
+LABEL Version="1.0.25-fpm"
+LABEL Description="PHP FPM 7.2 镜像. All extensions."
