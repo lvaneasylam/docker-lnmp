@@ -27,7 +27,7 @@ RUN apt-get update && apt-get install -y \
         libmemcached-dev zlib1g-dev \
         libc-client-dev libkrb5-dev \
     && rm -r /var/lib/apt/lists/* \
-    && pecl channel-update https://pecl.php.net \
+    && pecl channel-update https://pecl.php.net/channel.xml \
     && pecl install redis-4.3.0 \
     && pecl install memcached-2.2.0 \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
