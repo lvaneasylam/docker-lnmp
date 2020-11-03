@@ -45,60 +45,60 @@ services:
       - "9000"
     environment:
       - TZ=Asia/Shanghai
-  mysql:
-    image: mysql
-    environment:
-      - MYSQL_ROOT_PASSWORD=root
-    volumes:
-      - ./data/mysql:/var/lib/mysql
-    expose:
-      - "3306"
-    networks:
-      - lnmp
-
-  mongo:
-    image: mongo
-    restart: always
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example
-    ports:
-      - 27010:27010
-    volumes:
-      - ./data/mongo:/data/db
-    networks:
-      - lnmp
-
-#  mongo-express:
-#    image: mongo-express
-#    restart: always
-#    ports:
-#      - 8081:8081
+#  mysql:
+#    image: mysql
 #    environment:
-#      ME_CONFIG_MONGODB_ADMINUSERNAME: root
-#      ME_CONFIG_MONGODB_ADMINPASSWORD: example
-  mariadb:
-    image: mariadb
-    volumes:
-      - ./data/mariadb:/var/lib/mysql
-    networks:
-      - lnmp
-    expose:
-      - "3307"
-    environment:
-      - TZ=Asia/Shanghai
-      - "MYSQL_DATABASE=myBlog"
-      - "MYSQL_USER=myBlog"
-      - "MYSQL_PASSWORD=root"
-      - "MYSQL_ROOT_PASSWORD=root"
-  redis:
-    image: redis
-    volumes:
-      - ./data/redis:/data
-    networks:
-      - lnmp
-    expose:
-      - "6379"
+#      - MYSQL_ROOT_PASSWORD=root
+#    volumes:
+#      - ./data/mysql:/var/lib/mysql
+#    expose:
+#      - "3306"
+#    networks:
+#      - lnmp
+#
+#  mongo:
+#    image: mongo
+#    restart: always
+#    environment:
+#      MONGO_INITDB_ROOT_USERNAME: root
+#      MONGO_INITDB_ROOT_PASSWORD: example
+#    ports:
+#      - 27010:27010
+#    volumes:
+#      - ./data/mongo:/data/db
+#    networks:
+#      - lnmp
+#
+##  mongo-express:
+##    image: mongo-express
+##    restart: always
+##    ports:
+##      - 8081:8081
+##    environment:
+##      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+##      ME_CONFIG_MONGODB_ADMINPASSWORD: example
+#  mariadb:
+#    image: mariadb
+#    volumes:
+#      - ./data/mariadb:/var/lib/mysql
+#    networks:
+#      - lnmp
+#    expose:
+#      - "3307"
+#    environment:
+#      - TZ=Asia/Shanghai
+#      - "MYSQL_DATABASE=myBlog"
+#      - "MYSQL_USER=myBlog"
+#      - "MYSQL_PASSWORD=root"
+#      - "MYSQL_ROOT_PASSWORD=root"
+#  redis:
+#    image: redis
+#    volumes:
+#      - ./data/redis:/data
+#    networks:
+#      - lnmp
+#    expose:
+#      - "6379"
 networks:
   lnmp:
     driver: bridge
