@@ -36,11 +36,11 @@ services:
       - lnmp
     user: root
     privileged: true
-    depends_on:
-      - mariadb
-      - redis
-      - mysql
-      - mongo
+#    depends_on:
+#      - mariadb
+#      - redis
+#      - mysql
+#      - mongo
     expose:
       - "9000"
     environment:
