@@ -20,8 +20,9 @@ RUN apt-get update && apt-get install -y \
         libmemcached-dev zlib1g-dev \
     && pecl install redis-5.1.1 \
     && pecl install memcached-3.1.4 pdo_msql  \
+     && pecl install memcached-3.1.4 pdo_msql  \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd pdo pdo_mysql mysqli\
-    && docker-php-ext-enable redis memcached
+    && docker-php-ext-enable redis memcached mongodb
 
 EXPOSE 9000
