@@ -13,7 +13,7 @@ RUN  echo "deb-src http://mirrors.aliyun.com/debian wheezy-updates main contrib 
 RUN  echo "deb http://mirrors.aliyun.com/debian-security wheezy/updates main contrib non-free" >>/etc/apt/sources.list
 RUN  echo "deb-src http://mirrors.aliyun.com/debian-security wheezy/updates main contrib non-free" >>/etc/apt/sources.list
 
-RUN apt-get update && apt-get install -y \
+RUN apt-get update -y && apt-get install -y \
         libfreetype6-dev \
         libjpeg62-turbo-dev \
         libpng-dev \
