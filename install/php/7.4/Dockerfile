@@ -1,17 +1,17 @@
 FROM php:7.4-fpm
 MAINTAINER C_Hiang
-
-RUN echo "nameserver 150.236.34.180" | tee /etc/resolv.conf > /dev/null
-
-RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak
-
-#替换国内源
-RUN  echo "deb http://mirrors.aliyun.com/debian wheezy main contrib non-free" > /etc/apt/sources.list
-RUN  echo "deb-src http://mirrors.aliyun.com/debian wheezy main contrib non-free" >>/etc/apt/sources.list
-RUN  echo "deb http://mirrors.aliyun.com/debian wheezy-updates main contrib non-free" >>/etc/apt/sources.list
-RUN  echo "deb-src http://mirrors.aliyun.com/debian wheezy-updates main contrib non-free" >>/etc/apt/sources.list
-RUN  echo "deb http://mirrors.aliyun.com/debian-security wheezy/updates main contrib non-free" >>/etc/apt/sources.list
-RUN  echo "deb-src http://mirrors.aliyun.com/debian-security wheezy/updates main contrib non-free" >>/etc/apt/sources.list
+#
+#RUN echo "nameserver 150.236.34.180" | tee /etc/resolv.conf > /dev/null
+#
+#RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak
+#
+##替换国内源
+#RUN  echo "deb http://mirrors.aliyun.com/debian wheezy main contrib non-free" > /etc/apt/sources.list
+#RUN  echo "deb-src http://mirrors.aliyun.com/debian wheezy main contrib non-free" >>/etc/apt/sources.list
+#RUN  echo "deb http://mirrors.aliyun.com/debian wheezy-updates main contrib non-free" >>/etc/apt/sources.list
+#RUN  echo "deb-src http://mirrors.aliyun.com/debian wheezy-updates main contrib non-free" >>/etc/apt/sources.list
+#RUN  echo "deb http://mirrors.aliyun.com/debian-security wheezy/updates main contrib non-free" >>/etc/apt/sources.list
+#RUN  echo "deb-src http://mirrors.aliyun.com/debian-security wheezy/updates main contrib non-free" >>/etc/apt/sources.list
 
 RUN apt-get update && apt-get install -y \
         libfreetype6-dev \
