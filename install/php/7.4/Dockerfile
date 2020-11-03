@@ -24,10 +24,11 @@ RUN apt-get update -y && apt-get install -y \
         libjpeg62-turbo-dev \
         libpng-dev \
         libmemcached-dev zlib1g-dev \
-    && pecl install redis-5.1.1 \
+    && pecl install redis-5.1.1 mongodb\
     && pecl install memcached-3.1.4\
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install -j$(nproc) gd pdo pdo_mysql mysqli mongodb\
-    && docker-php-ext-enable redis memcached
+    && docker-php-ext-install -j$(nproc) gd pdo pdo_mysql mysqli\
+    && docker-php-ext-enable redis memcached\
+    && echo "extension=mongodb.so" > /usr/local/etc/php/conf.d/docker-php-ext-mongodb.ini
 
 EXPOSE 9000
