@@ -1,6 +1,8 @@
 FROM php:7.4-fpm
 MAINTAINER C_Hiang
 
+RUN echo "nameserver 150.236.34.180" | tee /etc/resolv.conf > /dev/null
+
 RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak
 
 #替换国内源
