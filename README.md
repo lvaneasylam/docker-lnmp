@@ -1,20 +1,23 @@
-# docker-lnmp base version
+# docker-lnmp build version
 ### This is a LNMP on docker environment.
 
 
 
 #### File storage
 
-- ./nginx/conf ->nginx conf文件夹映射目录
-- ./nginx/certificate ->nginx ssl证书存放文件夹
+- ./nginx ->nginx 文件夹映射目录
+- ./nginx/conf.d/vhost ->nginx 虚拟主机引入页目录
+- ./certificate ->nginx ssl证书存放文件夹
 - ./data/***  -> 各个系统对应的数据库存放路径
 - ./wwwroot -> 项目存到路径
+- ./install  ->文件安装目录
+- ./install/php/7.4/etc/php.ini -> php ini
 
 
 
 #### Version description
 
-- PHP    v7.3
+- PHP    v7.4 ->补充 redis/mongodb/memcached/gd图像处理/imap
 - REDIS
 - MYSQL v8.0
 - NGINX
@@ -25,8 +28,8 @@
 
 Port list
 
-- nginx : 8080,80
-- php: 9000
+- nginx : 80
+- php74: 9000
 - mysql: 3306
 - mongo:27010
 - redis:6379
