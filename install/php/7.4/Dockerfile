@@ -4,8 +4,8 @@ MAINTAINER C_Hiang
 RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak
 
 #替换国内源
-RUN  echo -e "deb http://mirrors.aliyun.com/debian wheezy main contrib non-free" > /etc/apt/sources.list
-RUN  echo -e "deb-src http://mirrors.aliyun.com/debian wheezy main contrib non-free" >>/etc/apt/sources.list
+RUN  echo "deb http://mirrors.aliyun.com/debian wheezy main contrib non-free" > /etc/apt/sources.list
+RUN  echo "deb-src http://mirrors.aliyun.com/debian wheezy main contrib non-free" >>/etc/apt/sources.list
 RUN  echo "deb http://mirrors.163.com/debian/ jessie main non-free contrib" >>/etc/apt/sources.list
 RUN  echo "deb http://mirrors.163.com/debian/ jessie-proposed-updates main non-free contrib" >>/etc/apt/sources.list
 RUN  echo "deb-src http://mirrors.163.com/debian/ jessie main non-free contrib" >>/etc/apt/sources.list
