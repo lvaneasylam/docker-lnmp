@@ -5,6 +5,7 @@ RUN echo "nameserver 223.5.5.5" | tee /etc/resolv.conf > /dev/null
 #备份源
 RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak
 
+RUN cat /etc/issue
 RUN cat /etc/apt/sources.list.bak
 
 #替换国内源
