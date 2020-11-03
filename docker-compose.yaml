@@ -47,6 +47,24 @@ services:
       - "9000"
     environment:
       - TZ=Asia/Shanghai
+  php56:
+    build: ./install/php/5.6
+    container_name: php56
+    volumes:
+      - ./wwwroot:/www
+    networks:
+      - lnmp
+    user: root
+    privileged: true
+    depends_on:
+      - mariadb
+      - redis
+      - mysql
+      - mongo
+    expose:
+      - "9000"
+    environment:
+      - TZ=Asia/Shanghai
   mysql:
     image: mysql
     environment:
