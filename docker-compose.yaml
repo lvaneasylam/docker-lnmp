@@ -15,7 +15,7 @@ services:
       - lnmp
     # 依赖，nginx依赖php是因为，你配置文件里就有依赖php的配置
     depends_on:
-      - php74
+      - php
     #开启端口
     expose:
       - "80"
@@ -27,7 +27,7 @@ services:
     privileged: true
     environment:
       - TZ=Asia/Shanghai
-  php74:
+  php:
     build: ./install/php/7.4
     container_name: php74
     volumes:
