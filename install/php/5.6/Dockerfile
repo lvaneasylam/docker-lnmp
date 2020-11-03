@@ -27,12 +27,14 @@ RUN apt-get update && apt-get install -y \
         libmemcached-dev zlib1g-dev \
         libc-client-dev libkrb5-dev \
     && rm -r /var/lib/apt/lists/* \
+    && pecl channel-update pecl.php.net \
     && pecl install redis-4.3.0 \
     && pecl install memcached-2.2.0 \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
     && docker-php-ext-install -j$(nproc) gd pdo pdo_mysql mysqli\
     && docker-php-ext-enable redis memcached \
+    && echo "extension=redis.so" > /usr/local/etc/php/conf.d/docker-php-ext-redis.ini
     && echo "extension=mongodb.so" > /usr/local/etc/php/conf.d/docker-php-ext-mongodb.ini
 
 EXPOSE 9000
