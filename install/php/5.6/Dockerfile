@@ -1,5 +1,7 @@
 FROM php:5.6-fpm
 MAINTAINER C_Hiang
+#copy 需要的包
+COPY memcached-2.2.0.tgz /home/memcached-2.2.0.tgz
 #替换阿里的DNS
 RUN echo "nameserver 223.5.5.5" | tee /etc/resolv.conf > /dev/null
 #备份源
@@ -29,7 +31,7 @@ RUN apt-get update && apt-get install -y \
     && rm -r /var/lib/apt/lists/* \
     && pecl channel-update https://pecl.php.net/channel.xml \
     && pecl install redis-4.3.0 \
-    && pecl install memcached-2.2.0 \
+    && pecl install memcached-2.2.0.tgz && echo "extension=memcached.so" > /usr/local/etc/php/conf.d/memcached.ini \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
     && docker-php-ext-install -j$(nproc) gd pdo pdo_mysql mysqli\
