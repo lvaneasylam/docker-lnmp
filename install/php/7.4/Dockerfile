@@ -19,6 +19,7 @@ RUN  echo "deb-src http://mirrors.cloud.tencent.com/debian/ buster main non-free
 RUN  echo "deb-src http://mirrors.cloud.tencent.com/debian/ buster-updates main non-free contrib" >>/etc/apt/sources.list
 RUN  echo "deb-src http://mirrors.cloud.tencent.com/debian/ buster-backports main non-free contrib" >>/etc/apt/sources.list
 
+#安装拓展redis,imap,gd图像处理,mysql,mongodb,memcached
 RUN apt-get update -y && apt-get install -y \
         libfreetype6-dev \
         libjpeg62-turbo-dev \
@@ -34,4 +35,18 @@ RUN apt-get update -y && apt-get install -y \
     && docker-php-ext-enable redis memcached\
     && echo "extension=mongodb.so" > /usr/local/etc/php/conf.d/docker-php-ext-mongodb.ini
 
+
+#安装php composer 如果无法安装可以下面的hash无法对应 到网站获取最新的hash值 https://getcomposer.org/download/
+RUN php -r "copy('https://install.phpcomposer.com/installer', 'composer-setup.php');" && \
+        php composer-setup.php && \
+        php -r "unlink('composer-setup.php');" && \
+        mv composer.phar /usr/local/bin/composer
+
+COPY ./etc/php.ini /usr/local/etc/php/php.ini
+
+
 EXPOSE 9000
+
+LABEL Author="C_Hiang"
+LABEL Version="PHP74-11041448"
+LABEL Description="PHP FPM 7.4 镜像.Extensions:redis,mongo,memcached,gd,imap."
