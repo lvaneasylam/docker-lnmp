@@ -48,7 +48,6 @@ RUN php -r "copy('https://install.phpcomposer.com/installer', 'composer-setup.ph
         php -r "unlink('composer-setup.php');" && \
         mv composer.phar /usr/local/bin/composer
 
-RUN rm -r /var/lib/apt/lists/*
 
 COPY ./etc/php.ini /usr/local/etc/php/php.ini
 
