@@ -1,7 +1,7 @@
 FROM php:5.6-fpm
 MAINTAINER C_Hiang
 #copy 需要的包
-COPY memcached-2.2.0.tgz /home/memcached-2.2.0.tgz
+COPY ./package/memcached-2.2.0.tgz /home/memcached-2.2.0.tgz
 #替换阿里的DNS
 RUN echo "nameserver 223.5.5.5" | tee /etc/resolv.conf > /dev/null
 #备份源
@@ -31,16 +31,20 @@ RUN apt-get update && apt-get install -y \
     && rm -r /var/lib/apt/lists/* \
     && pecl channel-update https://pecl.php.net/channel.xml \
     && pecl install redis-4.3.0 \
-    && pecl install memcached-2.2.0.tgz && echo "extension=memcached.so" > /usr/local/etc/php/conf.d/memcached.ini \
+    && pecl install memcached-2.2.0.tgz \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
     && docker-php-ext-install -j$(nproc) gd pdo pdo_mysql mysqli\
     && docker-php-ext-enable redis memcached \
+    && echo "extension=memcached.so" > /usr/local/etc/php/conf.d/memcached.ini \
     && echo "extension=redis.so" > /usr/local/etc/php/conf.d/docker-php-ext-redis.ini \
     && echo "extension=mongodb.so" > /usr/local/etc/php/conf.d/docker-php-ext-mongodb.ini
 
 EXPOSE 9000
 
-LABEL Author="Leo"
-LABEL Version="1.0.25-fpm"
-LABEL Description="PHP FPM 7.2 镜像. All extensions."
+#MAC 用
+#RUN usermod -u 1000 www-data && usermod -G staff www-data
+
+LABEL Author="C_Hiang"
+LABEL Version="PHP56-11041037"
+LABEL Description="PHP FPM 5.6 镜像.Extensions:redis,mongo,memcached,gd,imap."
