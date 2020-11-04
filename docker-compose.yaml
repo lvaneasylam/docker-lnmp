@@ -10,6 +10,7 @@ services:
       - ./nginx/certificate:/ssl-certificate
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
       - ./nginx/blocksip.conf:/etc/nginx/blocksip.conf
+      - ./nginx/fastcgi.conf:/etc/nginx/fastcgi.conf
       - ./nginx/log/error_nginx.log:/etc/nginx/log/error_nginx.log
       - ./nginx/vhost:/etc/nginx/conf.d
       - ./wwwroot:/www
