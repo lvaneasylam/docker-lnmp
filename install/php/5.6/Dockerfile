@@ -34,8 +34,8 @@ RUN apt-get update && apt-get install -y \
     && pecl install memcached-2.2.0.tgz \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
-    && docker-php-ext-install -j$(nproc) gd pdo pdo_mysql mysqli mongo\
-    && docker-php-ext-enable redis memcached \
+    && docker-php-ext-install -j$(nproc) gd pdo pdo_mysql mysqli \
+    && docker-php-ext-enable redis memcached mongo\
     && echo "extension=memcached.so" > /usr/local/etc/php/conf.d/memcached.ini \
     && echo "extension=redis.so" > /usr/local/etc/php/conf.d/docker-php-ext-redis.ini \
 #    && echo "extension=mongodb.so" > /usr/local/etc/php/conf.d/docker-php-ext-mongodb.ini
