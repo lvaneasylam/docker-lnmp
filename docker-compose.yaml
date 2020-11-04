@@ -9,7 +9,7 @@ services:
     volumes:
       - ./nginx/certificate:/ssl-certificate
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
-      - ./nginx/blockip.conf:/etc/nginx/blockip.conf
+      - ./nginx/blocksip.conf:/etc/nginx/blocksip.conf
       - ./nginx/vhost:/etc/nginx/conf.d
       - ./wwwroot:/www
     #网络名称, 注意这里只要设置成同一个网络名，他们互相之间就能通信了
