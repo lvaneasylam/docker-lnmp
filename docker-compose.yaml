@@ -8,7 +8,8 @@ services:
     #映射目录
     volumes:
       - ./nginx/certificate:/ssl-certificate
-      - ./nginx:/etc/nginx
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/vhost:/etc/nginx/conf.d
       - ./wwwroot:/www
     #网络名称, 注意这里只要设置成同一个网络名，他们互相之间就能通信了
     networks:
@@ -16,12 +17,16 @@ services:
     # 依赖，nginx依赖php是因为，你配置文件里就有依赖php的配置
     depends_on:
       - php56
+      - php74
+      - mysql
     #开启端口
     expose:
       - "80"
+      - "443"
     #映射端口
     ports:
-      - "80:80"
+      - 80:80
+      - 443:443
     #以下是用户，权限，时间设置
     user: root
     privileged: true
@@ -66,11 +71,13 @@ services:
     environment:
       - TZ=Asia/Shanghai
   mysql:
-    image: mysql
+    image: mysql:5.6.50
     environment:
       - MYSQL_ROOT_PASSWORD=root
     volumes:
       - ./data/mysql:/var/lib/mysql
+    ports:
+      - 3306:3306
     expose:
       - "3306"
     networks:
@@ -97,22 +104,24 @@ services:
 #    environment:
 #      ME_CONFIG_MONGODB_ADMINUSERNAME: root
 #      ME_CONFIG_MONGODB_ADMINPASSWORD: example
-  mariadb:
-    image: mariadb
-    volumes:
-      - ./data/mariadb:/var/lib/mysql
-    networks:
-      - lnmp
-    expose:
-      - "3307"
-    environment:
-      - TZ=Asia/Shanghai
-      - "MYSQL_DATABASE=myBlog"
-      - "MYSQL_USER=myBlog"
-      - "MYSQL_PASSWORD=root"
-      - "MYSQL_ROOT_PASSWORD=root"
+
+  #mariadb
+#  mariadb:
+#    image: mariadb
+#    volumes:
+#      - ./data/mariadb:/var/lib/mysql
+#    networks:
+#      - lnmp
+#    expose:
+#      - "3307"
+#    environment:
+#      - TZ=Asia/Shanghai
+#      - "MYSQL_DATABASE=myBlog"
+#      - "MYSQL_USER=myBlog"
+#      - "MYSQL_PASSWORD=root"
+#      - "MYSQL_ROOT_PASSWORD=root"
   redis:
-    image: redis
+    build: ./install/redis
     volumes:
       - ./data/redis:/data
     networks:
