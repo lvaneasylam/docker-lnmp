@@ -4,7 +4,7 @@ services:
   #本地镜像名称
   nginx:
     #云端拉取镜像名称
-    image: nginx
+    build: ./install/nginx
     #映射目录
     volumes:
       - ./nginx/certificate:/ssl-certificate
