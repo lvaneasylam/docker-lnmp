@@ -10,8 +10,8 @@ RUN apt-get update \
 RUN apt-get install -y curl
 
 RUN set -x ; \
-    groupadd -g 82 -S www-data ; \
-    adduser -u 82 -S -g www-data www-data && exit 0 ; exit 1
+    groupadd -g 82 www-data ; \
+    adduser www-data www-data && exit 0 ; exit 1
 
 ARG PHP_UPSTREAM_CONTAINER=php-fpm
 ARG PHP_UPSTREAM_PORT=9000
