@@ -45,7 +45,7 @@ RUN apt-get update && apt-get install -y \
         libmemcached-dev zlib1g-dev \
         libc-client-dev libkrb5-dev \
     && rm -r /var/lib/apt/lists/* \
-    && pecl channel-update https://pecl.php.net/channel.xml \
+#    && pecl channel-update https://pecl.php.net/channel.xml \
     && pecl install redis-2.2.8.tgz \
     && pecl install memcached-2.2.0.tgz \
     && pecl install mongo-1.6.16.tgz \
