@@ -6,6 +6,8 @@ if [ ! -f /etc/nginx/ssl/default.crt ]; then
     openssl x509 -req -days 365 -in "/etc/nginx/ssl/default.csr" -signkey "/etc/nginx/ssl/default.key" -out "/etc/nginx/ssl/default.crt"
 fi
 
+echo /var/run/crond.pid
+crontab -l
 # Start crond in background
 if [ ! -f /var/run/crond.pid ]; then
   /etc/init.d/cron restart
