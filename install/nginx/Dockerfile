@@ -3,12 +3,11 @@ MAINTAINER C_Hiang(base on laradock)
 
 
 RUN apt-get update \
-    && apt-get upgrade \
     && apt-get install -y logrotate \
-    && apt-get install -y --no-cache openssl \
-    && apt-get install -y --no-cache bash
+    && apt-get install -y openssl \
+    && apt-get install -y bash
 
-RUN apt-get install -y --no-cache curl
+RUN apt-get install -y curl
 
 RUN set -x ; \
     addgroup -g 82 -S www-data ; \
