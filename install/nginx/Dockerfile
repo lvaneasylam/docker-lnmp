@@ -17,6 +17,8 @@ RUN set -x ; \
 ARG PHP_UPSTREAM_CONTAINER=php-fpm
 ARG PHP_UPSTREAM_PORT=9000
 
+COPY ssl /etc/nginx/ssl/
+
 # Create 'messages' file used from 'logrotate'
 RUN touch /var/log/messages
 
