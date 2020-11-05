@@ -46,9 +46,9 @@ RUN apt-get update && apt-get install -y \
         libc-client-dev libkrb5-dev \
     && rm -r /var/lib/apt/lists/* \
     && pecl channel-update https://pecl.php.net/channel.xml \
-    && pecl install mongo-1.6.16.tgz \
     && pecl install redis-2.2.8 \
     && pecl install memcached-2.2.0.tgz \
+    && pecl install mongo-1.6.16.tgz \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
     && docker-php-ext-install -j$(nproc) gd pdo pdo_mysql mysqli \
