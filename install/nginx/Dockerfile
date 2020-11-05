@@ -5,7 +5,7 @@ MAINTAINER C_Hiang(base on laradock)
 RUN apt-get update \
     && apt-get install -y logrotate \
     && apt-get install -y openssl \
-    && apt-get install -y bash cron
+    && apt-get install -y bash cron vim
 
 RUN apt-get install -y curl
 
