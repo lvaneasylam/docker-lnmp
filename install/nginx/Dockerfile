@@ -7,11 +7,12 @@ RUN apt-get update \
     && apt-get install -y openssl \
     && apt-get install -y bash cron vim
 
-RUN apt-get install -y curl
+RUN apt-get install -y curl \
+    && rm -r /var/lib/apt/lists/*
 
 RUN set -x ; \
-    groupadd -g 82 www-data ; \
-    adduser www-data www-data && exit 0 ; exit 1
+#    groupadd -g 82 www-data ; \
+    adduser www-data www-data
 
 ARG PHP_UPSTREAM_CONTAINER=php-fpm
 ARG PHP_UPSTREAM_PORT=9000
