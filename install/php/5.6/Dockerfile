@@ -2,6 +2,8 @@ FROM php:5.6-fpm
 MAINTAINER C_Hiang
 #copy 需要的包
 COPY ./package/memcached-2.2.0.tgz /home/memcached-2.2.0.tgz
+COPY ./package/mongo-1.6.16.tgz /home/mongo-1.6.16.tgz
+
 #时区配置
 ENV TIMEZONE Asia/Shanghai
 #替换阿里的DNS
@@ -44,7 +46,7 @@ RUN apt-get update && apt-get install -y \
         libc-client-dev libkrb5-dev \
     && rm -r /var/lib/apt/lists/* \
     && pecl channel-update https://pecl.php.net/channel.xml \
-    && pecl install mongo \
+    && pecl install mongo-1.6.16.tgz \
     && pecl install redis-2.2.8 \
     && pecl install memcached-2.2.0.tgz \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
