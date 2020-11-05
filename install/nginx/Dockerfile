@@ -1,14 +1,14 @@
-FROM nginx:alpine
+FROM nginx
 MAINTAINER C_Hiang(base on laradock)
 
 
-RUN apk update \
-    && apk upgrade \
-    && apk --update add logrotate \
-    && apk add --no-cache openssl \
-    && apk add --no-cache bash
+RUN apt-get update \
+    && apt-get upgrade \
+    && apt-get install -y logrotate \
+    && apt-get install -y --no-cache openssl \
+    && apt-get install -y --no-cache bash
 
-RUN apk add --no-cache curl
+RUN apt-get install -y --no-cache curl
 
 RUN set -x ; \
     addgroup -g 82 -S www-data ; \
