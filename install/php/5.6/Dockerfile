@@ -52,9 +52,9 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
     && docker-php-ext-install -j$(nproc) gd pdo pdo_mysql mysqli \
-    && docker-php-ext-enable redis memcached mongo \
-    && echo "extension=memcached.so" > /usr/local/etc/php/conf.d/memcached.ini \
-    && echo "extension=redis.so" > /usr/local/etc/php/conf.d/redis.ini
+    && docker-php-ext-enable redis memcached mongo
+#    && echo "extension=memcached.so" > /usr/local/etc/php/conf.d/memcached.ini \
+#    && echo "extension=redis.so" > /usr/local/etc/php/conf.d/redis.ini
 
 #安装php composer
 RUN php -r "copy('https://install.phpcomposer.com/installer', 'composer-setup.php');" && \
